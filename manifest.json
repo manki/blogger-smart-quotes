@@ -1,6 +1,6 @@
 {
   "name": "Smart Punctuations",
-  "version": "1.1.0",
+  "version": "1.1.4",
   "description": "Replaces straight quotes (\"like this\") with smart quotes (“like this”) in Blogger's post editor and Gmail's compose box.",
   "icons": {
     "16": "img/quotes-16.png",
