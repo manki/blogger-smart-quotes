@@ -54,41 +54,46 @@ function shouldPreserveText(node) {
 }
 
 function updatePunctuation() {
-  var iframe = getEditorIframe();
-  if (!iframe) {
+  var nodes = getEditorNodes();
+  if (nodes.length == 0) {
     alert('Could not locate editor in this page.');
     return;
   }
 
-  var nodes = iframe.contentDocument.querySelector('[contentEditable]').childNodes;
   for (var i = 0; i < nodes.length; ++i) {
     processNode(nodes[i]);
   }
 }
 
-function getEditorIframe() {
+function getEditableFromIframe(iframe) {
+  return iframe.contentDocument.querySelector('[contentEditable]');
+}
+
+function getEditorNodes() {
   if (isBlogger()) {
-    return document.querySelector('#postingComposeBox');
-  } else if (isGmail()) {
-    var frames = document.querySelector('#canvas_frame').contentDocument.
-        querySelectorAll('iframe');
-    for (var i = 0; i < frames.length; ++i) {
-      var editor = null;
-      try {
-        if (frames[i].contentDocument) {
-          editor = frames[i].contentDocument.querySelector('[contentEditable]');
-          if (editor) {
-            return frames[i];
-          }
-        }
-      } catch (e) {
-        // Ignore any error.
-      }
+    var iframe = document.querySelector('#postingComposeBox');
+    if (iframe == null) {
+      return [];
     }
-    return null;
+    return [getEditableFromIframe(iframe)];
+  } else if (isGmail()) {
+    // Try to locate new compose boxes.
+    var newComposeBoxes = document.querySelectorAll('div.editable');
+    if (newComposeBoxes.length > 0) {
+      return newComposeBoxes;
+    }
+
+    // Look for old compose boxes.
+    var oldComposeIframe = document.querySelector('iframe.editable');
+    if (oldComposeIframe) {
+      return [getEditableFromIframe(oldComposeIframe)];
+    }
+
+    // Can't find any; give up.
+    return [];
   }
 
-  return null;
+  return [];
 }
 
 function isBlogger() {
