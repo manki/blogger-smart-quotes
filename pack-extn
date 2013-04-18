@@ -1,0 +1,10 @@
+#!/bin/zsh
+#
+# Creates a .zip file suitable for uploading to Chrome web store.
+
+setopt err_exit
+setopt extended_glob
+
+zipfile=smart-quotes.zip
+rm $zipfile || true
+zip -r $zipfile *.*~*.zip img

@@ -2,9 +2,9 @@ function processNode(node) {
   if (node.nodeName === '#text') {
     var text = node.nodeValue;
     node.nodeValue = node.nodeValue.
-        replace(/(\s|^)"/g, '$1“').
+        replace(/(\s|^|\()"/g, '$1“').
         replace(/"/g, '”').
-        replace(/(\s|^)'/g, '$1‘').
+        replace(/(\s|^|\()'/g, '$1‘').
         replace(/'/g, '’').
         replace(/(\w|\s)---(\w|\s)/g, '$1—$2').
         replace(/(\w|\s)--(\w|\s)/g, '$1—$2');
