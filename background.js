@@ -1,5 +1,5 @@
-var BLOGGER_NEW_UI_EDITOR_URL = /^https?:\/\/(?:www|draft)\.blogger\.com\/blogger\.g\?.*#editor\b/;
-var BLOGGER_OLD_UI_EDITOR_URL = /^https?:\/\/(?:www|draft)\.blogger\.com\/post-(?:create|edit)\.g\?/;
+var BLOGGER_NEW_UI_EDITOR_URL = /^https?:\/\/(?:www|draft)\.blogger\.com\/blog\/post\/edit\//;
+var BLOGGER_OLD_UI_EDITOR_URL = /^https?:\/\/(?:www|draft)\.blogger\.com\/blogger\.g\?.*#editor\b/;
 var GMAIL_URL = /^https:\/\/mail\.google\.com\//;
 
 function onTabEvent(tabId) {

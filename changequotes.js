@@ -71,7 +71,7 @@ function getEditableFromIframe(iframe) {
 
 function getEditorNodes() {
   if (isBlogger()) {
-    var iframe = document.querySelector('#postingComposeBox');
+    var iframe = document.querySelector('iframe.editable');
     if (iframe == null) {
       return [];
     }
