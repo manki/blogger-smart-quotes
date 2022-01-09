@@ -1,7 +1,7 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Smart Punctuations",
-  "version": "1.1.8",
+  "version": "1.1.9",
   "description": "Replaces straight quotes (\"like this\") with smart quotes (“like this”) in Blogger's post editor and Gmail's compose box.",
   "icons": {
     "16": "img/quotes-16.png",
@@ -9,17 +9,19 @@
     "128": "img/quotes-128.png"
   },
   "permissions": [
-    "tabs",
+    "declarativeContent",
+    "scripting",
+    "tabs"
+  ],
+  "host_permissions": [
     "*://*.blogger.com/*",
     "*://mail.google.com/*"
   ],
-  "page_action": {
+  "action": {
     "default_icon": "img/quotes-19.png",
     "default_title": "Apply smart punctuation to the current post"
   },
   "background": {
-    "scripts": [
-      "background.js"
-    ]
+    "service_worker": "background.js"
   }
 }
