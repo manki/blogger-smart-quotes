@@ -10,8 +10,7 @@
   },
   "permissions": [
     "declarativeContent",
-    "scripting",
-    "tabs"
+    "scripting"
   ],
   "host_permissions": [
     "*://*.blogger.com/*",
